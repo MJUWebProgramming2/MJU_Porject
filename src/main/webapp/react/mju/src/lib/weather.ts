@@ -1,4 +1,5 @@
 import axios from "axios";
+import Weatherbox from "../Components/main/WeatherBox";
 
 const key = process.env.REACT_APP_API_KEY;
 const ABS_ZERO = 273.15; 

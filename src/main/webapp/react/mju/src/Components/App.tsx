@@ -14,7 +14,8 @@ import Email from "../Routes/MyPage/Email";
 import Password from "../Routes/MyPage/Password";
 import MyArticle from "../Routes/MyPage/MyArticle";
 import MyRecommend from "../Routes/MyPage/MyRecommend";
-
+import WriteArticleButton from "./common/WriteArticleButton";
+import WriteArticle from "../Routes/WriteArticle";
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
     <Router>
       <Header />
       <Nav />
+      <WriteArticleButton />
       <Switch>
         <Route path="/login" exact component={Login}>
           <Login />
@@ -34,6 +36,9 @@ function App() {
         </Route>
         <Route path="/mypage" exact component={MyPage}>
           <MyPage />
+        </Route>
+        <Route path="/article/write" exact component={WriteArticle}>
+          <WriteArticle />
         </Route>
         <Route path="/mypage/email" exact component={Email} >
           <Email />
