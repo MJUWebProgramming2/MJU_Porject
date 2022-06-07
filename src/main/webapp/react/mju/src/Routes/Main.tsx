@@ -2,9 +2,11 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { getKoreaData, getTorontoData, getVancouverData } from '../lib/weather';
+import {getItemsData} from "../lib/getItemsData";
 
 import Clock from 'react-live-clock';
 import WeatherBox from '../Components/main/WeatherBox';
+import CategoryBar from "../Components/main/CategoryBar";
 
 interface MainProps {
     state: string;
@@ -12,6 +14,8 @@ interface MainProps {
 
 const MainWrap = styled.div`
 color: #3a3a3a;
+width: 1400px;
+margin: auto;
 `;
 
 const Title = styled.div`
@@ -52,28 +56,33 @@ span{
     font-size: 30px;
 }
 `;
-const NoticeBoardWrap = styled.div``;
-const CategoryBar = styled.div``;
-const CaregoryList = styled.li`
-list-style: none;
-font-size: 18px;
-border-bottom: 1px solid #3a3a3a;
-padding: 5px;
 
-`
+const NoticeBoardWrap = styled.div``;
+
 const BestArticleList = styled.div``;
 const AllArticleList = styled.div``;
+const CategoryBarWrap = styled.div``;
+
 const SubTitle = styled.h2``;
 const Wrap = styled.div`
 justify-content: space-around;
 display: flex;
 `;
 
+const CATEGORY_OPTIONS = [
+    {id: "1", name: "전체"},
+    {id: "2", name: "자유"},
+    {id: "3", name: "직업"},
+    {id: "4", name: "공부"},
+    {id: "5", name: "운동"},
+    {id: "6", name: "요리"},
+];
 
 function Main() {
     const [koreaData, setKoreaData] = useState<any>();
     const [torontoData, setTorontoData] = useState<any>();
     const [vancouverData, setVancouverData] = useState<any>();
+    const [itemsData, setItemsData] = useState<any>();
 
     async function postData() {
         try {
@@ -108,6 +117,14 @@ function Main() {
         })();
     }, []);
 
+    useEffect(() => {
+        (async () => {
+           const data = await getItemsData();
+           setItemsData(data);
+        })();
+    }, []);
+
+    console.log(itemsData);
     return (
         <MainWrap>
             <Title>Weather</Title>
@@ -130,20 +147,15 @@ function Main() {
                         <SubTitle>| Best 게시글</SubTitle>
                     </BestArticleList>
 
-                    <CategoryBar>
-                        <SubTitle>| 게시판 카테고리</SubTitle>
-                        <CaregoryList>전체 게시판</CaregoryList>
-                        <CaregoryList>자유 게시판</CaregoryList>
-                        <CaregoryList>요리 게시판</CaregoryList>
-                        <CaregoryList>운동 게시판</CaregoryList>
-                        <CaregoryList>직업 게시판</CaregoryList>
-                        <CaregoryList>공부 게시판</CaregoryList>
-                    </CategoryBar>
+                    <CategoryBarWrap>
+                    <SubTitle>| 게시판 카테고리</SubTitle>
+                    <CategoryBar options = {CATEGORY_OPTIONS}/>
+                    </CategoryBarWrap>
                 </Wrap>
 
-                <AllArticleList>
-                    <SubTitle>| 전체 게시글 </SubTitle>
-                </AllArticleList>
+                {/*<AllArticleList>*/}
+                {/*    <SubTitle>| 전체 게시글 </SubTitle>*/}
+                {/*</AllArticleList>*/}
 
             </NoticeBoardWrap>
         </MainWrap>

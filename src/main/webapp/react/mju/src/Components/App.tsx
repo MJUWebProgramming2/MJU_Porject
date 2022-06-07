@@ -25,39 +25,17 @@ function App() {
       <Nav />
       <WriteArticleButton />
       <Switch>
-        <Route path="/login" exact component={Login}>
-          <Login />
-        </Route>
-        <Route path="/register" exact component={Register}>
-          <Register />
-        </Route>
-        <Route path="/" exact component={Main}>
-          <Main />
-        </Route>
-        <Route path="/mypage" exact component={MyPage}>
-          <MyPage />
-        </Route>
-        <Route path="/article/write" exact component={WriteArticle}>
-          <WriteArticle />
-        </Route>
-        <Route path="/mypage/email" exact component={Email} >
-          <Email />
-        </Route>
-        <Route path="/mypage/password" exact component={Password} >
-          <Password />
-        </Route>
-        <Route path="/mypage/withdrawal" exact component={Withdrawal} >
-          <Withdrawal />
-        </Route>
-        <Route path="/mypage/myarticle" exact component={MyArticle} >
-          <MyArticle />
-        </Route>
-        <Route path="/mypage/myrecommend" exact component={MyRecommend} >
-          <MyRecommend />
-        </Route>
-        <Route path="/news" exact component={News}>
-          <News />
-        </Route>
+        <Route path="/" exact component={Main}/>
+        <Route path="/login" exact component={Login} />
+        <Route path="/register" exact component={Register} />
+        <Route path="/mypage" exact component={MyPage} />
+        <Route path="/article/write" exact component={WriteArticle}/>
+        <Route path="/mypage/email" exact component={Email} />
+        <Route path="/mypage/password" exact component={Password} />
+        <Route path="/mypage/withdrawal" exact component={Withdrawal} />
+        <Route path="/mypage/myarticle" exact component={MyArticle} />
+        <Route path="/mypage/myrecommend" exact component={MyRecommend} />
+        <Route path="/news" exact component={News}/>
       </Switch>
       <Footer />
     </Router>

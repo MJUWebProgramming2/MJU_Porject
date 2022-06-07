@@ -1,10 +1,19 @@
 {
   "files": {
+<<<<<<< HEAD
     "main.js": "/static/js/main.54b9e8ab.js",
     "index.html": "/index.html",
     "main.54b9e8ab.js.map": "/static/js/main.54b9e8ab.js.map"
   },
   "entrypoints": [
     "static/js/main.54b9e8ab.js"
+=======
+    "main.js": "/static/js/main.a276f73c.js",
+    "index.html": "/index.html",
+    "main.a276f73c.js.map": "/static/js/main.a276f73c.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.a276f73c.js"
+>>>>>>> 5ca5b21446ed773ebb1b028dafea7caad23c5aa1
   ]
 }
