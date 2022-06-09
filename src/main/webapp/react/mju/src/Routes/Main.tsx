@@ -1,12 +1,17 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { Link } from "react-router-dom";
 import styled from 'styled-components';
 import { getKoreaData, getTorontoData, getVancouverData } from '../lib/weather';
 import {getItemsData} from "../lib/getItemsData";
 
+
+
 import Clock from 'react-live-clock';
 import WeatherBox from '../Components/main/WeatherBox';
 import CategoryBar from "../Components/main/CategoryBar";
+import TimeBox from "../Components/main/TimeBox";
+import ArticleList from "../Components/main/ArticleList";
 
 interface MainProps {
     state: string;
@@ -42,22 +47,10 @@ line-height: 90px;
 margin-bottom: 150px;
 `;
 
-const TimeItem = styled.div`
-.clock{
-    display: block;
-    width: 250px;
-    margin: 0px 20px;
-    height: 90px;
-    background-color: #fcfcfc;
-    box-shadow:0 1px 1px rgba(0,0,0,0.25),0 2px 2px rgba(0,0,0,0.2),0 4px 4px rgba(0,0,0,0.15),0 8px 8px rgba(0,0,0,0.1),0 16px 16px rgba(0,0,0,0.05);
-}
-
-span{
-    font-size: 30px;
-}
+const NoticeBoardWrap = styled.div`
+display: flex;
+justify-content:center;
 `;
-
-const NoticeBoardWrap = styled.div``;
 
 const BestArticleList = styled.div``;
 const AllArticleList = styled.div``;
@@ -65,8 +58,10 @@ const CategoryBarWrap = styled.div``;
 
 const SubTitle = styled.h2``;
 const Wrap = styled.div`
-justify-content: space-around;
 display: flex;
+justify-content:space-around;
+padding: 0px 10px;
+width: 1000px;
 `;
 
 const CATEGORY_OPTIONS = [
@@ -77,6 +72,12 @@ const CATEGORY_OPTIONS = [
     {id: "5", name: "운동"},
     {id: "6", name: "요리"},
 ];
+
+const TIME_LIST = [
+    {id: 1, name: "Korea", timezone: "Asia/Seoul"},
+    {id: 2, name: "Toronto", timezone: "America/Toronto"},
+    {id: 3, name: "Vancouver", timezone: "America/Vancouver"}
+]
 
 function Main() {
     const [koreaData, setKoreaData] = useState<any>();
@@ -124,9 +125,11 @@ function Main() {
         })();
     }, []);
 
-    console.log(itemsData);
+
+
     return (
         <MainWrap>
+            {/*<img src="../../../../../../../ItemPhoto/image.png"/>*/}
             <Title>Weather</Title>
             <WeatherContainer>
                 {WeatherBox(koreaData)}
@@ -136,15 +139,14 @@ function Main() {
 
             <Title>Time</Title>
             <TimeContainer>
-                <TimeItem><span>Korea</span><Clock className='clock' format={'HH:mm:ss'} ticking={true} timezone={'Asia/Seoul'} /></TimeItem>
-                <TimeItem><span>Toronto</span><Clock style={{ backgroundColor: '#3a3a3a', color: "#fcfcfc" }} className='clock' format={'HH:mm:ss'} ticking={true} timezone={'America/Toronto'} /></TimeItem>
-                <TimeItem><span>Vancouver</span><Clock className='clock' format={'HH:mm:ss'} ticking={true} timezone={'America/Vancouver'} /></TimeItem>
+                <TimeBox list ={TIME_LIST}/>
             </TimeContainer>
 
             <NoticeBoardWrap>
                 <Wrap>
                     <BestArticleList>
                         <SubTitle>| Best 게시글</SubTitle>
+                        { itemsData != null ? <ArticleList items={itemsData} />  : <div>null</div>}
                     </BestArticleList>
 
                     <CategoryBarWrap>

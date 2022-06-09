@@ -11,7 +11,7 @@ const SLink = styled(Link)`
 `;
 
 const CategoryBarWrap = styled.div``;
-const CaregoryList = styled.li`
+const CategoryList = styled.li`
 list-style: none;
 font-size: 18px;
 border-bottom: 1px solid #3a3a3a;
@@ -22,9 +22,9 @@ const CategoryBar = (props: any) => {
     return (
         <CategoryBarWrap>
             {props.options.map((data: any) => (
-                <CaregoryList key={data.id}>
+                <CategoryList key={data.id}>
                     <SLink to={{pathname: `/article/${data.id}`}}> {data.name} 게시판</SLink>
-                </CaregoryList>
+                </CategoryList>
             ))}
         </CategoryBarWrap>
     );

@@ -8,7 +8,6 @@ export const getKoreaData = async () => {
         const data =  await fetch(
         `https://api.openweathermap.org/data/2.5/weather?lat=37.5665&lon=126.9780&appid=${key}`
     );
-    console.log("get korea weather");
     const weatherData = await data.json();
 
     const weather = {
@@ -32,7 +31,6 @@ export const getTorontoData = async () => {
     const data =  await fetch(
     `https://api.openweathermap.org/data/2.5/weather?lat=43.663693&lon=-79.411519&appid=${key}`
 );
-console.log("get toronto weather");
 const weatherData = await data.json();
 
 const weather = {
@@ -55,7 +53,6 @@ export const getVancouverData = async () => {
     const data =  await fetch(
     `https://api.openweathermap.org/data/2.5/weather?lat=49.241375&lon=-123.108508&appid=${key}`
 );
-console.log("get vancouver weather");
 const weatherData = await data.json();
 
 const weather = {
