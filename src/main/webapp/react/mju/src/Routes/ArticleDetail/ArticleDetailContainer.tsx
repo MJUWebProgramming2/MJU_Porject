@@ -8,6 +8,7 @@ display: flex;
 justify-content: center;
 `;
 
+
 class ArticleDetailContainer extends Component<any, any> {
 
     constructor(props:any) {
@@ -42,6 +43,8 @@ class ArticleDetailContainer extends Component<any, any> {
         }finally {
             this.setState({loading: false, result});
         }
+
+        // console.log(result);
     }
     render() {
         const { result, error, loading} = this.state;

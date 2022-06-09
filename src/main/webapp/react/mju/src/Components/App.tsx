@@ -16,8 +16,8 @@ import MyArticle from "../Routes/MyPage/MyArticle";
 import MyRecommend from "../Routes/MyPage/MyRecommend";
 import WriteArticleButton from "./common/WriteArticleButton";
 import WriteArticle from "../Routes/Article/WriteArticle";
-import ArticleDetailContainer from "../Routes/Article/ArticleDetailContainer";
-import ArticleSortList from "../Routes/Article/ArticleSortList";
+import ArticleDetailContainer from "../Routes/ArticleDetail/ArticleDetailContainer";
+import ArticleSortListContainer from "../Routes/ArticleSortList/ArticleSortListContainer";
 
 
 function App() {
@@ -31,7 +31,7 @@ function App() {
           <Route path="/login" exact component={Login} />
           <Route path="/register" exact component={Register} />
           <Route path="/article/write" exact component={WriteArticle}/>
-          <Route path="/article/:id" exact component={ArticleSortList}/>
+          <Route path="/article/:id" exact component={ArticleSortListContainer}/>
           <Route path="/article/detail/:id" exact component={ArticleDetailContainer}/>
 
           <Route path="/mypage" exact component={MyPage} />

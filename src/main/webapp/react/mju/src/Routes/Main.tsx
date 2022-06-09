@@ -66,11 +66,11 @@ width: 1000px;
 
 const CATEGORY_OPTIONS = [
     {id: "1", name: "전체"},
-    {id: "2", name: "자유"},
-    {id: "3", name: "직업"},
-    {id: "4", name: "공부"},
-    {id: "5", name: "운동"},
-    {id: "6", name: "요리"},
+    // {id: "2", name: "자유"},
+    // {id: "3", name: "직업"},
+    // {id: "4", name: "공부"},
+    // {id: "5", name: "운동"},
+    // {id: "6", name: "요리"},
 ];
 
 const TIME_LIST = [
@@ -146,12 +146,12 @@ function Main() {
                 <Wrap>
                     <BestArticleList>
                         <SubTitle>| Best 게시글</SubTitle>
-                        { itemsData != null ? <ArticleList items={itemsData} />  : <div>null</div>}
+                        { itemsData != null ? <ArticleList categorys ={CATEGORY_OPTIONS} items={itemsData} />  : <div>null</div>}
                     </BestArticleList>
 
                     <CategoryBarWrap>
                     <SubTitle>| 게시판 카테고리</SubTitle>
-                    <CategoryBar options = {CATEGORY_OPTIONS}/>
+                    <CategoryBar items={itemsData} options = {CATEGORY_OPTIONS}/>
                     </CategoryBarWrap>
                 </Wrap>
 
