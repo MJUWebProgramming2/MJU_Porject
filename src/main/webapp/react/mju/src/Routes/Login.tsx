@@ -7,7 +7,7 @@ font-size: 20;
 function Login(){
     return (
         <>
-        <LoginTitle>Login</LoginTitle>
+        <LoginTitle>Loginqwerty</LoginTitle>
         Login
         </>
     );
