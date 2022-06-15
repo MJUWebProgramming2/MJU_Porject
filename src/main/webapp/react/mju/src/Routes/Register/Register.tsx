@@ -7,9 +7,8 @@ import RegisterButton from "./RegisterButton";
 const MainContainer = styled.div`
     display: flex;
     margin: auto;
-    align-items: center;
     flex-direction: column;
-    height: 120vh;
+    height: 140vh;
     width: 50vw;
     background: rgba(0, 0, 0, 0.83);
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
@@ -20,112 +19,88 @@ const MainContainer = styled.div`
     color: #000; // text
     text-transform: uppercase;
     letter-spacing: 0.4rem;
-    @media only screen and (max-width: 320px) {
-        width: 40vw;
-        height: 120vh;
-        hr {
-        margin-bottom: 0.3rem;
-        }
-        h4 {
-        font-size: small;
-        }
-    }
-    @media only screen5and (min-width: 360px) {
-        width: 30vw;
-        height: 120vh;
-        h4 {
-        font-size: small;
-        }
-    }
-    @media only screen and (min-width: 411px) {
-        width: 50vw;
-        height: 120vh;
-    }
-    @media only screen and (min-width: 768px) {
-        width: 40vw;
-        height: 120vh;
-    }
-    @media only screen and (min-width: 1024px) {
-        width: 40vw;
-        height: 120vh;
-    }
-    @media only screen and (min-width: 1280px) {
-        width: 1325px;
-        height: 120vh;
-    }
 `;
 
-const AccountText = styled.h5`
-    margin: 0.5rem 200px 0 0;
+const Wrap = styled.div`
+    margin: auto;
+`;
+
+const AccountText = styled.h4`
+    margin: 0 0 1rem 0;
     color: #fff;
-    text-align: left;
 `;
 
 const InputContainer = styled.div`
-    padding: 0 0 0 0;
-    margin: 1rem 0 1rem 0;
+    margin: 0 0 0 0;
     display: flex;
-//     flex-direction: column;
-//     justify-content: center;
-//     align-items: center;
+    justify-content: center;
+    align-items: center;
     height: 20%;
-    width: 100%;
+    width: 400px;
 `;
 
 const ButtonContainer = styled.div`
-    position: relative;
     margin: 2rem 0 2rem 0;
-    width: 100%;
+    position: relative;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    width: 100%;
 `;
 
 function Register(){
     return (
         <MainContainer>
-
+        <Wrap>
         <AccountText>아이디</AccountText>
             <InputContainer>
                 <RegisterInput type="text" placeholder="ID" />
-                <RegisterButton content="아이디 중복확인" />
+                <RegisterButton content="중복확인" />
             </InputContainer>
-
+        </Wrap>
+        <Wrap>
         <AccountText>비밀번호</AccountText>
             <InputContainer>
                 <RegisterInput type="password" placeholder="Password" />
             </InputContainer>
-
+        </Wrap>
+        <Wrap>
         <AccountText>비밀번호 확인</AccountText>
             <InputContainer>
                 <RegisterInput type="password" placeholder="Password 확인" />
             </InputContainer>
-
+        </Wrap>
+        <Wrap>
         <AccountText>이름</AccountText>
             <InputContainer>
                 <RegisterInput type="text" placeholder="이름" />
             </InputContainer>
-
+        </Wrap>
+        <Wrap>
         <AccountText>생년월일</AccountText>
             <InputContainer>
                  <RegisterInput type="text" placeholder="년(4자)" />
                  <RegisterInput type="text" placeholder="월" />
                  <RegisterInput type="text" placeholder="일" />
             </InputContainer>
-
+        </Wrap>
+        <Wrap>
         <AccountText>전화번호</AccountText>
             <InputContainer>
                   <RegisterInput type="text" placeholder="휴대전화" />
             </InputContainer>
+        </Wrap>
 
+        <Wrap>
         <AccountText>이메일</AccountText>
             <InputContainer>
                   <RegisterInput type="text" placeholder="이메일" />
             </InputContainer>
-
+        </Wrap>
             <ButtonContainer>
                 <RegisterButton content="Sign Up" />
             </ButtonContainer>
+
         </MainContainer>
       );
 }

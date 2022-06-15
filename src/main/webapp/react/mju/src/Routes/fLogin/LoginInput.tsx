@@ -1,6 +1,6 @@
 import styled from "styled-components";
 export default function LoginInput({ type="any", placeholder="any" }) {
-  return <StyledInput type={type} placeholder={placeholder} />;
+  return <StyledInput type={type} placeholder={placeholder}/>;
 }
 
 const StyledInput = styled.input`
@@ -8,7 +8,7 @@ const StyledInput = styled.input`
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   border-radius: 10px;
   margin: 0 0 20px 0;
-  width: 80%;
+  width: 60%;
   height: 3rem;
   padding: 1rem;
   border: none;

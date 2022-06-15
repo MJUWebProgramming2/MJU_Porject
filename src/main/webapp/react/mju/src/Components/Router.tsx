@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
-import styled from "styled-components";
 import Footer from "../Components/common/Footer";
 import Header from "../Components/common/Header";
 import Main from "../Routes/Main";
@@ -18,14 +17,17 @@ import WriteArticleButton from "./common/WriteArticleButton";
 import WriteArticle from "../Routes/Article/WriteArticle";
 import ArticleDetailContainer from "../Routes/ArticleDetail/ArticleDetailContainer";
 import ArticleSortListContainer from "../Routes/ArticleSortList/ArticleSortListContainer";
+import PrivateRoute from "../Routes/PrivateRoute";
 
-export default () => (
+// @ts-ignore
+export default (props) => (
         <Router>
             <Header />
             <Nav />
             {/*<WriteArticleButton />*/}
             <Switch>
-                <Route path="/" exact component={Main}/>
+                {/*<PrivateRoute exact path="/" component={Main} getRoomList={props.getRoomList}/>*/}
+                <Route component={Main} path="/" exact />
                 <Route path="/login" exact component={Login} />
                 <Route path="/register" exact component={Register} />
                 <Route path="/article/write" exact component={WriteArticle}/>
