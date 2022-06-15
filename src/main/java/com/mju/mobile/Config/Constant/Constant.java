@@ -22,7 +22,7 @@ public class Constant {
         public static final String messageAlreadyExistClientException = "Auth is already Exist";
 
         public static final int codeAlreadyExistArticleException = -1005;
-        public static final String messageAlreadyExistArticleException = "Already Exist Article";
+        public static final String messageAlreadyExistArticleException = "Already Exist WriteArticle";
 
         public static final int codeAlreadyRecommendationException = -1006;
         public static final String messageAlreadyRecommendationException = "Already RecommendationException";

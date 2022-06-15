@@ -2,8 +2,15 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { getKoreaData, getTorontoData, getVancouverData } from '../lib/weather';
+import {getCovidData} from "../lib/covid19";
+import {getItemsData} from "../lib/getItemsData";
 
-import Clock from 'react-live-clock';
+
+import WeatherBox from '../Components/main/WeatherBox';
+import CategoryBar from "../Components/main/CategoryBar";
+import TimeBox from "../Components/main/TimeBox";
+import ArticleList from "../Components/main/ArticleList";
+import CovidNotice from "../Components/main/CovidNotice";
 
 interface MainProps {
     state: string;
@@ -11,13 +18,15 @@ interface MainProps {
 
 const MainWrap = styled.div`
 color: #3a3a3a;
+margin: auto;
 `;
 
 const Title = styled.div`
 text-align: center;
-font-size: 35px;
+font-size: 32px;
 font-weight: 700;
 margin-top: 50px;
+color: #3a3a3a;
 `;
 
 const WeatherContainer = styled.div`
@@ -34,100 +43,54 @@ justify-content: center;
 font-size: 40px;
 text-align: center;
 line-height: 90px;
+margin-bottom: 150px;
 `;
 
-const WeatherItem = styled.div`
-margin:0px 20px;
-padding: 15px;
-border-radius: 10px;
-width: 250px;
-background-color: #3a3a3a;
-color: #fcfcfc;
-box-shadow:0 1px 1px rgba(0,0,0,0.25),0 2px 2px rgba(0,0,0,0.2),0 4px 4px rgba(0,0,0,0.15),0 8px 8px rgba(0,0,0,0.1),0 16px 16px rgba(0,0,0,0.05);
-`;
-
-const LocationName = styled.div`
-font-size: 30px;
-text-align: center;
-`;
-const WeatherTemp = styled.div`
+const NoticeBoardWrap = styled.div`
 display: flex;
-justify-content: center;
-align-items: center;
-font-size: 50px;
-line-height: 120px;
-
-div{
-    margin-left: 10px;
-    height: 120px;
-}
-
+justify-content:center;
+color: #3a3a3a;
 `;
 
-const WeatherDetail = styled.div`
+const BestArticleList = styled.div`
+margin-right: 30px;
+`;
+const AllArticleList = styled.div``;
+const CategoryBarWrap = styled.div``;
+
+const SubTitle = styled.div`
+font-size: 25px;
+font-weight: 600;
+margin-bottom: 20px;
+`;
+const Wrap = styled.div`
 display: flex;
-justify-content: space-around;
-font-size: 15px;
+justify-content:space-around;
+padding: 0px 10px;
 `;
 
-const TimeItem = styled.div`
-.clock{
-    display: block;
-    width: 250px;
-    margin: 0px 20px;
-    height: 90px;
-    background-color: #fcfcfc;
-    box-shadow:0 1px 1px rgba(0,0,0,0.25),0 2px 2px rgba(0,0,0,0.2),0 4px 4px rgba(0,0,0,0.15),0 8px 8px rgba(0,0,0,0.1),0 16px 16px rgba(0,0,0,0.05);
-}
+const CATEGORY_OPTIONS = [
+    {id: "1", name: "전체"},
+    // {id: "2", name: "자유"},
+    // {id: "3", name: "직업"},
+    // {id: "4", name: "공부"},
+    // {id: "5", name: "운동"},
+    // {id: "6", name: "요리"},
+];
 
-span{
-    font-size: 30px;
-}
-`;
-
-const WeatherLodingContainer = styled.div`
-width: 250px;
-height: 170px;
-
-border-radius: 10px;
-margin:0px 20px;
-padding: 15px;
-
-font-size: 40px;
-text-align: center;
-line-height: 180px;
-
-background-color: #fcfcfc;
-color: #606060;
-box-shadow:0 1px 1px rgba(0,0,0,0.25),0 2px 2px rgba(0,0,0,0.2),0 4px 4px rgba(0,0,0,0.15),0 8px 8px rgba(0,0,0,0.1),0 16px 16px rgba(0,0,0,0.05);
-`;
-
+const TIME_LIST = [
+    {id: 1, name: "Korea", timezone: "Asia/Seoul"},
+    {id: 2, name: "Toronto", timezone: "America/Toronto"},
+    {id: 3, name: "Vancouver", timezone: "America/Vancouver"}
+]
 
 function Main() {
     const [koreaData, setKoreaData] = useState<any>();
     const [torontoData, setTorontoData] = useState<any>();
     const [vancouverData, setVancouverData] = useState<any>();
 
-    async function postData() {
-        try {
-            //응답 성공 
-            const response = await axios.post('http://localhost:8080/auth/login', {
-                //보내고자 하는 데이터 
-                id: "test",
-                password: "test"
-            });
-            console.log(response);
-        } catch (error) {
-            //응답 실패
-            console.error(error);
-        }
-    }
-
-    useEffect(() => {
-        (async () => {
-            await postData();
-        })();
-    }, []);
+    const [itemsData, setItemsData] = useState<any>();
+    const [covidData, setCovidData] = useState<any>();
 
 
     useEffect(() => {
@@ -141,62 +104,58 @@ function Main() {
         })();
     }, []);
 
+    useEffect(() => {
+        (async () => {
+            const data = await getCovidData();
+            setCovidData(data);
+        })();
+    }, []);
+
+    useEffect(() => {
+        (async () => {
+            const data = await getItemsData();
+            setItemsData(data);
+        })();
+    }, []);
+
+
+
     return (
         <MainWrap>
+            {/*<img src="../../../../../../../ItemPhoto/image.png"/>*/}
+            <Title>캐나다 코로나 19 현황</Title>
+            {CovidNotice(covidData)}
+
             <Title>Weather</Title>
             <WeatherContainer>
-                {koreaData != null ?
-                    <WeatherItem>
-                        <LocationName>Korea ({koreaData.name})</LocationName>
-                        <WeatherTemp>
-                            <img src={require(`../assets/main_weather/${koreaData.icon}.png`)} />
-                            <div>{koreaData.temp}°</div>
-                        </WeatherTemp>
-                        <WeatherDetail>
-                            <div>체감 {koreaData.tempFeel}° </div>
-                            <div>습도 {koreaData.hum}% </div>
-                            <div>바람 {koreaData.wind}m/s </div>
-                        </WeatherDetail>
-                    </WeatherItem>
-                    : <WeatherLodingContainer>Loding...</WeatherLodingContainer>}
-
-                {torontoData != null ?
-                    <WeatherItem>
-                        <LocationName>{torontoData.name}</LocationName>
-                        <WeatherTemp>
-                            <img src={require(`../assets/main_weather/${torontoData.icon}.png`)} />
-                            <div>{torontoData.temp}°</div>
-                        </WeatherTemp>
-                        <WeatherDetail>
-                            <div>체감 {torontoData.tempFeel}°</div>
-                            <div>습도 {torontoData.hum}%</div>
-                            <div>바람 {torontoData.wind}m/s</div>
-                        </WeatherDetail>
-                    </WeatherItem>
-                    : <WeatherLodingContainer>Loding...</WeatherLodingContainer>}
-
-                {vancouverData != null ?
-                    <WeatherItem>
-                        <LocationName>{vancouverData.name}</LocationName>
-                        <WeatherTemp>
-                            <img src={require(`../assets/main_weather/${vancouverData.icon}.png`)} />
-                            <div>{vancouverData.temp}°</div>
-                        </WeatherTemp>
-                        <WeatherDetail>
-                            <div>체감 {vancouverData.tempFeel}°</div>
-                            <div>습도 {vancouverData.hum}%</div>
-                            <div>바람 {vancouverData.wind}m/s</div>
-                        </WeatherDetail>
-                    </WeatherItem>
-                    :  <WeatherLodingContainer>Loding...</WeatherLodingContainer>}
+                {WeatherBox(koreaData)}
+                {WeatherBox(torontoData)}
+                {WeatherBox(vancouverData)}
             </WeatherContainer>
+
             <Title>Time</Title>
             <TimeContainer>
-                <TimeItem> <span>Korea</span><Clock className='clock' format={'HH:mm:ss'} ticking={true} timezone={'Asia/Seoul'} /></TimeItem>
-                <TimeItem><span>Toronto</span><Clock style={{ backgroundColor: '#3a3a3a', color: "#fcfcfc" }} className='clock' format={'HH:mm:ss'} ticking={true} timezone={'America/Toronto'} /></TimeItem>
-                <TimeItem><span>Vancouver</span><Clock className='clock' format={'HH:mm:ss'} ticking={true} timezone={'America/Vancouver'} /></TimeItem>
+                <TimeBox list ={TIME_LIST}/>
             </TimeContainer>
 
+            <NoticeBoardWrap>
+                <Wrap>
+                    <BestArticleList>
+                        <SubTitle>| Best 게시글</SubTitle>
+                        { itemsData != null ? <ArticleList categorys ={CATEGORY_OPTIONS} items={itemsData} sorting ={true} />  : <div>null</div>}
+                    </BestArticleList>
+
+                    <CategoryBarWrap>
+                        <SubTitle>| 게시판 카테고리</SubTitle>
+                        <CategoryBar items={itemsData} options = {CATEGORY_OPTIONS}/>
+                    </CategoryBarWrap>
+                </Wrap>
+
+                {/*<AllArticleList>*/}
+                {/*    <SubTitle>| 전체 게시글 </SubTitle>*/}
+                {/*</AllArticleList>*/}
+
+            </NoticeBoardWrap>
         </MainWrap>
     );
 }
