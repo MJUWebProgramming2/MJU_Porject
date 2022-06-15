@@ -3,7 +3,6 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react'
 import RegisterInput from "./RegisterInput";
 import RegisterButton from "./RegisterButton";
-// import client from "../MJU_Porject/src/main/java/com/mju/mobile/Controller/AuthController"
 
 const MainContainer = styled.div`
     display: flex;

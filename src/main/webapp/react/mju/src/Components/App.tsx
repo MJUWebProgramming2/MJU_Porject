@@ -1,11 +1,11 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import styled from "styled-components";
-import Footer from "./Footer";
-import Header from "./Header";
+import Footer from "../Components/common/Footer";
+import Header from "../Components/common/Header";
 import Main from "../Routes/Main";
 import MyPage from "../Routes/MyPage/MyPage";
-import Nav from "./Nav";
+import Nav from "../Components/common/Nav";
 import News from "../Routes/News/News";
 import Login from "../Routes/fLogin/Login";
 import Register from "../Routes/Register/Register";
