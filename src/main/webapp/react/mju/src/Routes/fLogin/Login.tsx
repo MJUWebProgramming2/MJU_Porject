@@ -2,10 +2,6 @@ import styled from 'styled-components';
 import axios from 'axios';
 import React, {useState, useEffect} from 'react'
 
-import LoginInput from "./LoginInput";
-import LoginButton from "./LoginButton";
-
-
 const LoginWrap = styled.body`
     position: relative;
     margin: 0 0 45% 0;
@@ -59,6 +55,7 @@ const WelcomeText = styled.h1`
 
 const InputContainer = styled.div`
     margin: 1rem 0 0 0;
+    padding: 2rem;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -92,8 +89,8 @@ input{
   background: #fff;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   border-radius: 10px;
-  margin: 0 0 20px 0;
-  width: 60%;
+  margin-bottom: 20px;
+  width: 100%;
   height: 3rem;
   padding: 1rem;
   border: none;
@@ -140,6 +137,7 @@ function Login() {
     const [inputId, setInputId] = useState('');
     const [inputPw, setInputPw] = useState('');
 
+
     const handleInputId = (e: any) => {
         setInputId(e.target.value)
     }
@@ -176,7 +174,7 @@ function Login() {
     return (
         <LoginWrap>
             <ImageWrap>
-                <BackImage src={require('../../assets/canada.jpg')}/>
+                <BackImage src={require('../../assets/login/canada.jpg')}/>
             </ImageWrap>
 
             <Wrap><WarningText>로그인한 회원만 이용 가능합니다.</WarningText></Wrap>
@@ -193,7 +191,7 @@ function Login() {
 
                 <ButtonContainer>
                     <StyledButton type='button' onClick={onClickLogin}>
-                        <UserImage src={require(`../../assets/user.png`)} />
+                        <UserImage src={require(`../../assets/login/user.png`)} />
                         Login</StyledButton>
                 </ButtonContainer>
             </MainContainer>

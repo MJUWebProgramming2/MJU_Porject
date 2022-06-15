@@ -17,13 +17,24 @@ text-align: center;
 color: #606060;
 `;
 
+const ImageWrap = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`;
+const HeaderImage = styled.img`
+    width: 300px;
+`;
 
 function Header() {
 
     return (
         <HeaderWrap>
-            <Logo>H! CANADA</Logo>
-            <SubTitle> KOREAN COMMUNITY</SubTitle>
+            <ImageWrap>
+                <HeaderImage src={require('../../assets/logo/headerLogo.png')}/>
+            </ImageWrap>
+            {/*<Logo>H!CANADA</Logo>*/}
+            <SubTitle>KOREAN COMMUNITY</SubTitle>
         </HeaderWrap >
     );
 }

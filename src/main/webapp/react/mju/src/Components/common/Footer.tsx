@@ -2,25 +2,32 @@ import styled from 'styled-components';
 
 const FooterWrap = styled.div`
 .footer {
-    border-top: 1px dashed black;
-    padding: 20px;
+    //border-top: 1px black;
+    padding: 10px;
+    background: #3a3a3a;
     color: #ccc;
     font: 7px 'arial';
     letter-spacing: 1px;
-    margin: 100px;
-    text-align: center;
+    margin: 150px 0 0 0;
+    text-align: left;
+        justify-content: center;
 }
+`;
+
+const FooterImage = styled.img`
+    width: 100px;
 `;
 
 function Footer(){
     return (
         <FooterWrap>
-         <footer id="footer">
-        <div className="footer">
-            <h2>상호명: H!CANADA 전화번호: 0100101010101</h2>
-            <h2>이메일: HICANADA?!@gmail.com</h2>
-        </div>
-    </footer>
+            <footer id="footer">
+                <div className="footer">
+                    <FooterImage src={require('../../assets/logo/footerLogo.png')}/>
+                    <h2>Copyright 2022-2022 H!CANADA © All rights reserved.</h2>
+                    <h2>E-mail:H!CANADA@gmail.com 전화:0100-1010-1010</h2>
+                </div>
+            </footer>
         </FooterWrap>
     );
 }

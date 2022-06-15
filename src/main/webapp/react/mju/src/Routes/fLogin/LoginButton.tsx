@@ -3,7 +3,7 @@ import styled from "styled-components";
 export default function LoginButton({ content="any" }) {
     return (
         <StyledButton>
-        <UserImage src={require(`../../assets/user.png`)} />
+        <UserImage src={require(`src/assets/login/user.png`)} />
         {content}</StyledButton>
     );
 }

@@ -5,7 +5,7 @@ const WeatherItem = styled.div`
 margin:0px 20px;
 padding: 15px;
 border-radius: 10px;
-width: 250px;
+width: 280px;
 background-color: #3a3a3a;
 color: #fcfcfc;
 box-shadow:0 1px 1px rgba(0,0,0,0.25),0 2px 2px rgba(0,0,0,0.2),0 4px 4px rgba(0,0,0,0.15),0 8px 8px rgba(0,0,0,0.1),0 16px 16px rgba(0,0,0,0.05);

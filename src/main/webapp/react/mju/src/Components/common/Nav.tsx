@@ -17,7 +17,7 @@ display: flex;
 const Item = styled.span`
 display: block;
 list-style: none;
-font-size: 30px;
+font-size: 20px;
 color: #fcfcfc;
 margin: 15px 40px;
 `;

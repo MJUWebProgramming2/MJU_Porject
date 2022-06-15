@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { getKoreaData, getTorontoData, getVancouverData } from '../lib/weather';
+import {getCovidData} from "../lib/covid19";
 import {getItemsData} from "../lib/getItemsData";
 
 
@@ -9,6 +10,7 @@ import WeatherBox from '../Components/main/WeatherBox';
 import CategoryBar from "../Components/main/CategoryBar";
 import TimeBox from "../Components/main/TimeBox";
 import ArticleList from "../Components/main/ArticleList";
+import CovidNotice from "../Components/main/CovidNotice";
 
 interface MainProps {
     state: string;
@@ -16,15 +18,15 @@ interface MainProps {
 
 const MainWrap = styled.div`
 color: #3a3a3a;
-width: 1400px;
 margin: auto;
 `;
 
 const Title = styled.div`
 text-align: center;
-font-size: 35px;
+font-size: 32px;
 font-weight: 700;
 margin-top: 50px;
+color: #3a3a3a;
 `;
 
 const WeatherContainer = styled.div`
@@ -50,7 +52,9 @@ justify-content:center;
 color: #3a3a3a;
 `;
 
-const BestArticleList = styled.div``;
+const BestArticleList = styled.div`
+margin-right: 30px;
+`;
 const AllArticleList = styled.div``;
 const CategoryBarWrap = styled.div``;
 
@@ -63,7 +67,6 @@ const Wrap = styled.div`
 display: flex;
 justify-content:space-around;
 padding: 0px 10px;
-width: 1000px;
 `;
 
 const CATEGORY_OPTIONS = [
@@ -85,7 +88,9 @@ function Main() {
     const [koreaData, setKoreaData] = useState<any>();
     const [torontoData, setTorontoData] = useState<any>();
     const [vancouverData, setVancouverData] = useState<any>();
+
     const [itemsData, setItemsData] = useState<any>();
+    const [covidData, setCovidData] = useState<any>();
 
 
     useEffect(() => {
@@ -101,8 +106,15 @@ function Main() {
 
     useEffect(() => {
         (async () => {
-           const data = await getItemsData();
-           setItemsData(data);
+            const data = await getCovidData();
+            setCovidData(data);
+        })();
+    }, []);
+
+    useEffect(() => {
+        (async () => {
+            const data = await getItemsData();
+            setItemsData(data);
         })();
     }, []);
 
@@ -111,6 +123,9 @@ function Main() {
     return (
         <MainWrap>
             {/*<img src="../../../../../../../ItemPhoto/image.png"/>*/}
+            <Title>캐나다 코로나 19 현황</Title>
+            {CovidNotice(covidData)}
+
             <Title>Weather</Title>
             <WeatherContainer>
                 {WeatherBox(koreaData)}
@@ -131,8 +146,8 @@ function Main() {
                     </BestArticleList>
 
                     <CategoryBarWrap>
-                    <SubTitle>| 게시판 카테고리</SubTitle>
-                    <CategoryBar items={itemsData} options = {CATEGORY_OPTIONS}/>
+                        <SubTitle>| 게시판 카테고리</SubTitle>
+                        <CategoryBar items={itemsData} options = {CATEGORY_OPTIONS}/>
                     </CategoryBarWrap>
                 </Wrap>
 

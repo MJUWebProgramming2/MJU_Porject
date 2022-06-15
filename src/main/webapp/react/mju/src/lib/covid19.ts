@@ -1,16 +1,14 @@
-import axios from "axios";
+export const getCovidData = async () => {
+    const data = await fetch("https://api.covid19tracker.ca/summary");
+    const covidData = await data.json();
 
-const covid19tracker = axios.create({
-    baseURL: "https://api.covid19tracker.ca/summary"
-  })
-  
-  export const getCovidData =  async () => {
-      try{
-        const data = await covid19tracker.get("");
-        console.log("[SUCCESS] GET data");
-        return data;
-      }catch (e) {
-        console.log("[FAIL] GET data");
-        return null;
+    const dataAttributes = {
+        total_cases: covidData.data[0].total_cases,
+        total_fatalities: covidData.data[0].total_fatalities,
+        change_cases: covidData.data[0].change_cases,
+        change_fatalities: covidData.data[0].change_fatalities,
+        total_vaccinated: covidData.data[0].total_vaccinated,
+        last_updated: covidData.last_updated,
     }
-  }
+    return dataAttributes;
+}

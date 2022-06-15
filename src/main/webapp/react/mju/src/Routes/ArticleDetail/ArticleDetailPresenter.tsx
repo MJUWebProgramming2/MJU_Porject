@@ -34,6 +34,7 @@ const ArticleDetailPresenter = ({result, loading, error}:any) =>
     );
 
 const ArticleDetailWrap = styled.div`
+margin-top: 100px;
 background-color: #fcfcfc;
 width: 1300px;
 `;
