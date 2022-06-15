@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+
 const WeatherItem = styled.div`
 margin:0px 20px;
 padding: 15px;

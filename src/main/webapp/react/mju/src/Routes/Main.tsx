@@ -1,13 +1,10 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { Link } from "react-router-dom";
 import styled from 'styled-components';
 import { getKoreaData, getTorontoData, getVancouverData } from '../lib/weather';
 import {getItemsData} from "../lib/getItemsData";
 
 
-
-import Clock from 'react-live-clock';
 import WeatherBox from '../Components/main/WeatherBox';
 import CategoryBar from "../Components/main/CategoryBar";
 import TimeBox from "../Components/main/TimeBox";
@@ -50,13 +47,18 @@ margin-bottom: 150px;
 const NoticeBoardWrap = styled.div`
 display: flex;
 justify-content:center;
+color: #3a3a3a;
 `;
 
 const BestArticleList = styled.div``;
 const AllArticleList = styled.div``;
 const CategoryBarWrap = styled.div``;
 
-const SubTitle = styled.h2``;
+const SubTitle = styled.div`
+font-size: 25px;
+font-weight: 600;
+margin-bottom: 20px;
+`;
 const Wrap = styled.div`
 display: flex;
 justify-content:space-around;
@@ -146,7 +148,7 @@ function Main() {
                 <Wrap>
                     <BestArticleList>
                         <SubTitle>| Best 게시글</SubTitle>
-                        { itemsData != null ? <ArticleList categorys ={CATEGORY_OPTIONS} items={itemsData} />  : <div>null</div>}
+                        { itemsData != null ? <ArticleList categorys ={CATEGORY_OPTIONS} items={itemsData} sorting ={true} />  : <div>null</div>}
                     </BestArticleList>
 
                     <CategoryBarWrap>

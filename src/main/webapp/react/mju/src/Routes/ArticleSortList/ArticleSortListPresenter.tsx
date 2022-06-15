@@ -8,7 +8,7 @@ const ArticleSortListPresenter = ({result, loading, error}:any) =>
         <Wrap>
             <div>
                 <CategoryName>| 전체 게시판</CategoryName>
-                { result.list != null ? <ArticleList  items={result.list} />  : <div>null</div>}
+                { result.list != null ? <ArticleList  items={result.list} sorting={false} />  : <div>null</div>}
             </div>
         </Wrap>
     );

@@ -2,6 +2,7 @@ import React from "react";
 import { Link, withRouter } from "react-router-dom";
 import styled from 'styled-components';
 
+
 const NavWrap = styled.div`
 display: flex;
 justify-content: center;
@@ -13,25 +14,26 @@ const List = styled.ul`
 display: flex;
 `;
 
-const Item = styled.li`
+const Item = styled.span`
 display: block;
 list-style: none;
 font-size: 30px;
 color: #fcfcfc;
-margin: 10px 40px;
+margin: 15px 40px;
 `;
 
 const SLink = styled(Link)`
   text-decoration: none;
  :visited{
       color: #fcfcfc;
-  }`;
+  }
+`;
 
 export default withRouter(({ location: { pathname } }) => (
     <NavWrap>
         <List>
             <Item>
-                <SLink to="/">MAIN</SLink>
+                <SLink to="/" >MAIN</SLink>
             </Item>
             <Item>
                 <SLink to="/news">NEWS</SLink>
@@ -41,4 +43,4 @@ export default withRouter(({ location: { pathname } }) => (
             </Item>
         </List>
     </NavWrap>
-        ));
+));

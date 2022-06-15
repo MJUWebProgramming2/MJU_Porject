@@ -1,34 +1,58 @@
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 import styled from "styled-components";
 
+
 const ArticleList = (props: any) => {
-    // {console.log(props);}
-    { const sort = (data:any) => {
-        const arr = [];
-        for(let i in data){
-            arr.push([i, data[i]]);
+    function sortByHighLikes(arr: any) {
+        const sortedArr = arr.slice();
+        for (let i = 0; i < sortedArr.length; i++) {
+            let swap;
+            for (let j = 0; j < sortedArr.length - 1 - i; j++) {
+                if (sortedArr[j].likes < sortedArr[j + 1].likes) {
+                    swap = sortedArr[j];
+                    sortedArr[j] = sortedArr[j + 1];
+                    sortedArr[j + 1] = swap;
+                }
+            }
+            if (!swap) {
+                break;
+            }
         }
-        return arr.sort((a,b) => b[1] - a[1]);
-        }
-        // console.log(sort(props.items.map((item:any)=> item.likes)));
+        return sortedArr;
     }
 
-    return(
+    return (
         <div>
-            {props.items.map((item: any) => (
-                <SLink key={item.id} to = {{pathname: `/article/detail/${item.id}`}}>
-                <ArticleListWrap key={item.id}>
-                    <Title>
-                        <span>{item.id} | </span>
-                        <span>{item.title}</span>
-                    </Title>
-                    <Item>
-                        <span>조회수 | {item.views}</span>
-                        <span>추천수 | {item.likes}</span>
-                    </Item>
-                </ArticleListWrap>
+
+            {props.sorting ? sortByHighLikes(props.items).map((item: any) =>
+                <SLink key={item.id} to={{pathname: `/article/detail/${item.id}`}}>
+                    <ArticleListWrap key={item.id}>
+                        <Title>
+                            {/*<span>{item.id} | </span>*/}
+                            <span>{item.title}</span>
+                        </Title>
+                        <Item>
+                            <span>조회수 | {item.views}</span>
+                            <span>추천수 | {item.likes}</span>
+                        </Item>
+                    </ArticleListWrap>
                 </SLink>
-            ))}
+            ) : <>
+                {props.items.map((item: any) => (
+                    <SLink key={item.id} to={{pathname: `/article/detail/${item.id}`}}>
+                        <ArticleListWrap key={item.id}>
+                            <Title>
+                                {/*<span>{item.id} | </span>*/}
+                                <span>{item.title}</span>
+                            </Title>
+                            <Item>
+                                <span>조회수 | {item.views}</span>
+                                <span>추천수 | {item.likes}</span>
+                            </Item>
+                        </ArticleListWrap>
+                    </SLink>
+                ))}
+            </>}
         </div>
     );
 }
