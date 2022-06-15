@@ -1,17 +1,17 @@
 import styled from "styled-components";
 
-export default function Button({ content="any" }) {
+export default function RegisterButton({ content="any" }) {
   return <StyledButton>{content}</StyledButton>;
 }
 
 const StyledButton = styled.button`
-  background: linear-gradient(to right, #14163c 0%, #03217b 79%);
+  background: WHITE;
   text-transform: uppercase;
   letter-spacing: 0.2rem;
-  width: 65%;
+  width: 15%;
   height: 3rem;
   border: none;
-  color: white;
-  border-radius: 0.5px;
+  color: #000;
+  border-radius: 10px;
   cursor: pointer;
 `;
