@@ -3,8 +3,8 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react'
 import LoginInput from "./LoginInput";
 import LoginButton from "./LoginButton";
-import bgimage from './assets/canada.jpg';
-// import client from "../MJU_Porject/src/main/java/com/mju/mobile/Controller/AuthController"
+import backgroundImg from "../../assets/canada.jpg";
+
 
 // // 로그인
 // export const login = ({username, password}) => 
@@ -16,6 +16,10 @@ import bgimage from './assets/canada.jpg';
 
 // // 로그인 상태 확인
 // export const check = () => client.get('/api/auth/check');
+
+const LoginWrap = styled.body`
+
+`
 
 const MainContainer = styled.div`
     display: flex;
@@ -145,8 +149,9 @@ function Login(){
     // },
     // [])
     return (
-//     <img src={bgimage} className='App-logo' alt='React' />
-        <MainContainer>
+        <LoginWrap>
+            <img src={require(`../../assets/canada.jpg`)} />
+            <MainContainer>
             <WarningText>로그인한 회원만 이용 가능합니다.</WarningText>
             <WelcomeText>login</WelcomeText>
             <InputContainer>
@@ -154,10 +159,11 @@ function Login(){
                 <LoginInput type="password" placeholder="Password" />
             </InputContainer>
             <ButtonContainer>
-{/*                 <img src="../assets/user.jpg"> */}
+                {/*<img src={require(`../../assets/user.png`)} />*/}
                 <LoginButton content="Sign Up" />
             </ButtonContainer>
         </MainContainer>
+        </LoginWrap>
       );
 }
 
