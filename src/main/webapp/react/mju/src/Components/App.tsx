@@ -8,7 +8,7 @@ import MyPage from "../Routes/MyPage/MyPage";
 import Nav from "./Nav";
 import News from "../Routes/News/News";
 import Login from "../Routes/fLogin/Login";
-import Register from "../Routes/Register";
+import Register from "../Routes/Register/Register";
 import Withdrawal from "../Routes/MyPage/Withdrawal";
 import Email from "../Routes/MyPage/Email";
 import Password from "../Routes/MyPage/Password";
