@@ -11,13 +11,14 @@ import CategoryBar from "../Components/main/CategoryBar";
 import TimeBox from "../Components/main/TimeBox";
 import ArticleList from "../Components/main/ArticleList";
 import CovidNotice from "../Components/main/CovidNotice";
+import Footer from "../Components/common/Footer";
 
 interface MainProps {
     state: string;
 }
 
 const MainWrap = styled.div`
-color: #3a3a3a;
+color: ${props => props.theme.color.black};
 margin: auto;
 `;
 
@@ -26,7 +27,7 @@ text-align: center;
 font-size: 32px;
 font-weight: 700;
 margin-top: 50px;
-color: #3a3a3a;
+color: ${props => props.theme.color.black};
 `;
 
 const WeatherContainer = styled.div`
@@ -49,7 +50,8 @@ margin-bottom: 150px;
 const NoticeBoardWrap = styled.div`
 display: flex;
 justify-content:center;
-color: #3a3a3a;
+color: ${props => props.theme.color.black};
+margin-bottom: 100px;
 `;
 
 const BestArticleList = styled.div`
@@ -154,8 +156,8 @@ function Main() {
                 {/*<AllArticleList>*/}
                 {/*    <SubTitle>| 전체 게시글 </SubTitle>*/}
                 {/*</AllArticleList>*/}
-
             </NoticeBoardWrap>
+            <Footer/>
         </MainWrap>
     );
 }

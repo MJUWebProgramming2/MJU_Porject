@@ -33,8 +33,8 @@ const RegisterButton = styled.button`
 margin: auto;
 display: block;
 font-size: 25px;
-background-color: #3a3a3a;
-color: #fcfcfc;
+background-color:${props => props.theme.color.black};
+color:${props => props.theme.color.white};
 border-radius: 25px;
 width: 150px;
 padding: 5px 0px;
@@ -42,8 +42,8 @@ padding: 5px 0px;
 
 const SelectBoxWrap = styled.div`
 select{
-background-color: #3a3a3a;
-color: #fcfcfc;
+background-color: ${props => props.theme.color.black};
+color: ${props => props.theme.color.white};
 padding: 0px 10px;
 text-align: center;
 border-radius: 5px;

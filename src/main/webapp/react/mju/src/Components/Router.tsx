@@ -44,6 +44,5 @@ export default (props) => (
                 <Route path="/news" exact component={News}/>
                 <Redirect from="*" to="/" />
             </Switch>
-            <Footer />
         </Router>
     );

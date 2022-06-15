@@ -14,7 +14,7 @@ color: #3a3a3a;
 const SubTitle = styled.div`
 font-size: 25px;
 text-align: center;
-color: #606060;
+color: ${props => props.theme.color.gray};
 `;
 
 const ImageWrap = styled.div`

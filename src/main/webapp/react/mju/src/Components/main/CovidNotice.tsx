@@ -4,7 +4,7 @@ import styled from "styled-components";
 const CovidNoticeWrap = styled.div`
 display: flex;
 justify-content: center;
-border-bottom: 1px solid gray;
+border-bottom: 1px solid ${props => props.theme.color.lightgray};
 `;
 
 const ItemBox = styled.div`

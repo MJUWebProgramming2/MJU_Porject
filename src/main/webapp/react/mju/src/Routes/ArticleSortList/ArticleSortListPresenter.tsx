@@ -16,8 +16,8 @@ const ArticleSortListPresenter = ({result, loading, error}:any) =>
 const Wrap = styled.div`
 display: flex;
 justify-content: center;
-background-color: #fcfcfc;
-border: 2px solid #3a3a3a;
+background-color: ${props => props.theme.color.white};
+border: 2px solid ${props => props.theme.color.black};
 border-radius: 20px;
 width: 900px;
 height: 500px;

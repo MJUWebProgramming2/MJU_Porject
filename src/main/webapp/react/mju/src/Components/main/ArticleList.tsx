@@ -24,7 +24,7 @@ const ArticleList = (props: any) => {
     return (
         <div>
 
-            {props.sorting ? sortByHighLikes(props.items).map((item: any) =>
+            {props.sorting ? sortByHighLikes(props.items).slice(0,10).map((item: any) =>
                 <SLink key={item.id} to={{pathname: `/article/detail/${item.id}`}}>
                     <ArticleListWrap key={item.id}>
                         <Title>
@@ -61,13 +61,13 @@ const ArticleListWrap = styled.div`
 width: 600px;
 display: flex;
 justify-content: space-between;
-border-bottom: 1px solid #3a3a3a;
+border-bottom: 1px solid ${props => props.theme.color.black};
 padding: 5px 15px;
 
 `;
 const Title = styled.div`
 font-size: 20px;
-color: #3a3a3a;
+color: ${props => props.theme.color.black};
 overflow: hidden;
 text-overflow: ellipsis;
 white-space: nowrap;
@@ -77,7 +77,7 @@ height: 20px;
 const Item = styled.div`
 display: flex;
 justify-content: space-between;
-color: #606060;
+color: ${props => props.theme.color.gray};
 width: 180px;
 `;
 

@@ -35,13 +35,13 @@ const ArticleDetailPresenter = ({result, loading, error}:any) =>
 
 const ArticleDetailWrap = styled.div`
 margin-top: 100px;
-background-color: #fcfcfc;
+background-color: ${props => props.theme.color.white};
 width: 1300px;
 `;
 
 const Title = styled.h1`
 font-size: 40px;
-color: #3a3a3a;
+color: ${props => props.theme.color.black};
 text-align: center;
 `
 
@@ -51,7 +51,7 @@ justify-content: flex-end;
 `;
 
 const Info = styled.div`
-color: #606060;
+color: ${props => props.theme.color.gray};
 margin-bottom: 30px;
 margin-right: 50px;
 `;

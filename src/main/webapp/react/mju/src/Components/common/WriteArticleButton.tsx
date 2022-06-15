@@ -15,7 +15,7 @@ cursor: pointer;
 const SLink = styled(Link)`
   text-decoration: none;
   :visited{
-      color: #fcfcfc;
+      color: ${props => props.theme.color.white};
   }
 `;
 
