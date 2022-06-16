@@ -1,7 +1,7 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
-import { getKoreaData, getTorontoData, getVancouverData } from '../lib/weather';
+import {getKoreaData, getTorontoData, getVancouverData} from '../lib/weather';
 import {getCovidData} from "../lib/covid19";
 import {getItemsData} from "../lib/getItemsData";
 
@@ -12,6 +12,7 @@ import TimeBox from "../Components/main/TimeBox";
 import ArticleList from "../Components/main/ArticleList";
 import CovidNotice from "../Components/main/CovidNotice";
 import Footer from "../Components/common/Footer";
+import WriteArticleButton from "../Components/common/WriteArticleButton";
 
 interface MainProps {
     state: string;
@@ -121,44 +122,48 @@ function Main() {
     }, []);
 
 
-
     return (
-        <MainWrap>
-            {/*<img src="../../../../../../../ItemPhoto/image.png"/>*/}
-            <Title>캐나다 코로나 19 현황</Title>
-            {CovidNotice(covidData)}
+        <>
+            <WriteArticleButton/>
+            <MainWrap>
+                {/*<img src="../../../../../../../ItemPhoto/image.png"/>*/}
+                <Title>캐나다 코로나 19 현황</Title>
+                {CovidNotice(covidData)}
 
-            <Title>Weather</Title>
-            <WeatherContainer>
-                {WeatherBox(koreaData)}
-                {WeatherBox(torontoData)}
-                {WeatherBox(vancouverData)}
-            </WeatherContainer>
+                <Title>Weather</Title>
+                <WeatherContainer>
+                    {WeatherBox(koreaData)}
+                    {WeatherBox(torontoData)}
+                    {WeatherBox(vancouverData)}
+                </WeatherContainer>
 
-            <Title>Time</Title>
-            <TimeContainer>
-                <TimeBox list ={TIME_LIST}/>
-            </TimeContainer>
+                <Title>Time</Title>
+                <TimeContainer>
+                    <TimeBox list={TIME_LIST}/>
+                </TimeContainer>
 
-            <NoticeBoardWrap>
-                <Wrap>
-                    <BestArticleList>
-                        <SubTitle>| Best 게시글</SubTitle>
-                        { itemsData != null ? <ArticleList categorys ={CATEGORY_OPTIONS} items={itemsData} sorting ={true} />  : <div>null</div>}
-                    </BestArticleList>
+                <NoticeBoardWrap>
+                    <Wrap>
+                        <BestArticleList>
+                            <SubTitle>| Best 게시글</SubTitle>
+                            {itemsData != null ?
+                                <ArticleList categorys={CATEGORY_OPTIONS} items={itemsData} sorting={true}/> :
+                                <div>null</div>}
+                        </BestArticleList>
 
-                    <CategoryBarWrap>
-                        <SubTitle>| 게시판 카테고리</SubTitle>
-                        <CategoryBar items={itemsData} options = {CATEGORY_OPTIONS}/>
-                    </CategoryBarWrap>
-                </Wrap>
+                        <CategoryBarWrap>
+                            <SubTitle>| 게시판 카테고리</SubTitle>
+                            <CategoryBar items={itemsData} options={CATEGORY_OPTIONS}/>
+                        </CategoryBarWrap>
+                    </Wrap>
 
-                {/*<AllArticleList>*/}
-                {/*    <SubTitle>| 전체 게시글 </SubTitle>*/}
-                {/*</AllArticleList>*/}
-            </NoticeBoardWrap>
-            <Footer/>
-        </MainWrap>
+                    {/*<AllArticleList>*/}
+                    {/*    <SubTitle>| 전체 게시글 </SubTitle>*/}
+                    {/*</AllArticleList>*/}
+                </NoticeBoardWrap>
+                <Footer/>
+            </MainWrap>
+        </>
     );
 }
 

@@ -6,6 +6,7 @@ import { ReactChild, ReactFragment, ReactPortal } from 'react';
 const WriteArticleWrap = styled.div`
 display: flex;
 justify-content: center;
+margin: 50px 0px;
 `;
 
 const Container = styled.div`
@@ -78,7 +79,7 @@ function WriteArticle(){
         <>
         <WriteArticleWrap>
             <Container>
-                <SelectBox options = {CATEGORY_OPTIONS} ></SelectBox>
+                {/*<SelectBox options = {CATEGORY_OPTIONS} ></SelectBox>*/}
             <InputTitle type='text' placeholder="제목을 입력해주세요."/>
             <InputArticle placeholder="글 쓰기" />
             <RegisterButton>등록하기</RegisterButton>

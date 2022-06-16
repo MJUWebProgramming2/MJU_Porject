@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 
 const WeatherItem = styled.div`
+cursor: pointer;
 margin:0px 20px;
 padding: 15px;
 border-radius: 10px;
