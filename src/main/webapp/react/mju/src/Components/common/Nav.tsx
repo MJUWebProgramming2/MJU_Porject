@@ -6,7 +6,7 @@ import styled from 'styled-components';
 const NavWrap = styled.div`
 display: flex;
 justify-content: center;
-background-color:  #3a3a3a;
+background-color: ${props => props.theme.color.black};
 z-index: 10;
 `;
 
@@ -18,14 +18,14 @@ const Item = styled.span`
 display: block;
 list-style: none;
 font-size: 20px;
-color: #fcfcfc;
+color:${props => props.theme.color.white};
 margin: 15px 40px;
 `;
 
 const SLink = styled(Link)`
   text-decoration: none;
  :visited{
-      color: #fcfcfc;
+      color: ${props => props.theme.color.white};
   }
 `;
 

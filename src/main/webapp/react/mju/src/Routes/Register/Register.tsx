@@ -10,7 +10,7 @@ const MainContainer = styled.div`
     flex-direction: column;
     height: 140vh;
     width: 50vw;
-    background: rgba(0, 0, 0, 0.83);
+    background: ${props => props.theme.color.black};
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
     backdrop-filter: blur(8.5px);
     -webkit-backdrop-filter: blur(8.5px);
@@ -27,7 +27,7 @@ const Wrap = styled.div`
 
 const AccountText = styled.h4`
     margin: 0 0 1rem 0;
-    color: #fff;
+    color: ${props => props.theme.color.white};
 `;
 
 const InputContainer = styled.div`

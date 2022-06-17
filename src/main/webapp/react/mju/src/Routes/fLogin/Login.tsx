@@ -32,7 +32,7 @@ const MainContainer = styled.div`
 const WarningText = styled.div`
     background: translate;
     margin: 4rem 0 1rem 0;
-    color: #fff;
+    color: ${props => props.theme.color.white};
     font-size: 30px;
     font-weight: bold;
 `;
@@ -48,7 +48,7 @@ const Wrap = styled.div`
 
 const WelcomeText = styled.h1`
     margin: 2.5rem 0 4rem 0;
-    color: #fff;
+    color: ${props => props.theme.color.white};
     font-size: 30px;
     font-weight: bold;
 `;

@@ -6,6 +6,7 @@ import { ReactChild, ReactFragment, ReactPortal } from 'react';
 const WriteArticleWrap = styled.div`
 display: flex;
 justify-content: center;
+margin: 50px 0px;
 `;
 
 const Container = styled.div`
@@ -33,8 +34,8 @@ const RegisterButton = styled.button`
 margin: auto;
 display: block;
 font-size: 25px;
-background-color: #3a3a3a;
-color: #fcfcfc;
+background-color:${props => props.theme.color.black};
+color:${props => props.theme.color.white};
 border-radius: 25px;
 width: 150px;
 padding: 5px 0px;
@@ -42,8 +43,8 @@ padding: 5px 0px;
 
 const SelectBoxWrap = styled.div`
 select{
-background-color: #3a3a3a;
-color: #fcfcfc;
+background-color: ${props => props.theme.color.black};
+color: ${props => props.theme.color.white};
 padding: 0px 10px;
 text-align: center;
 border-radius: 5px;
@@ -78,7 +79,7 @@ function WriteArticle(){
         <>
         <WriteArticleWrap>
             <Container>
-                <SelectBox options = {CATEGORY_OPTIONS} ></SelectBox>
+                {/*<SelectBox options = {CATEGORY_OPTIONS} ></SelectBox>*/}
             <InputTitle type='text' placeholder="제목을 입력해주세요."/>
             <InputArticle placeholder="글 쓰기" />
             <RegisterButton>등록하기</RegisterButton>

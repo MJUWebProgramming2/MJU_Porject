@@ -2,15 +2,17 @@ import { Link } from "react-router-dom";
 import styled from 'styled-components';
 
 const MyPageWrap = styled.div`
-    .content {padding: 100px; background: #000;}
-    .content-box {margin: 30px auto 0; padding: 30px 50px 50px; width: 300px; border-radius: 10px; background: #fff;}
+    .content {padding: 100px; height: 73vh; background: ${props => props.theme.color.black};}
+    .content-box {margin: 30px auto 0; padding: 30px 50px 50px; width: 300px; border-radius: 10px; background: ${props => props.theme.color.white};}
     .content-box:first-child {margin-top: 0;}
     .content-group {margin: 0; padding: 0; list-style: none;}
+    .content-title{font-size: 25px; font-weight: 600; color: ${props => props.theme.color.black}; margin-bottom: 10px;}
+    .content-item{margin-bottom: 5px;}
 `;
 
 const SLink = styled(Link)`
   text-decoration: none;
-  color: #333
+  color: ${props => props.theme.color.black};
 `;
 
 function MyPage(){

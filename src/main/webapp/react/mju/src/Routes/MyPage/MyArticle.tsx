@@ -2,13 +2,13 @@ import styled from 'styled-components';
 
 const MyArticleWrap = styled.div`
 
-    .board {margin: 30px auto 0; padding: 30px; max-width: 1200px; border: 1px solid #000; border-radius: 5px;}
-    .board-title {padding-left: 10px; border-left: 3px solid #000;}
+    .board {margin: 30px auto 0; padding: 30px; max-width: 1200px; border: 1px solid${props => props.theme.color.black}; border-radius: 5px;}
+    .board-title {padding-left: 10px; border-left: 3px solid ${props => props.theme.color.black};}
     .board-group {margin: 30px 0 0; padding: 0; }
-    .board-item {overflow: hidden; padding: 20px 0;border-top: 1px solid #eee;}
+    .board-item {overflow: hidden; padding: 20px 0;border-top: 1px solid ${props => props.theme.color.lightgray};}
     .board-item__header {float: left; margin-right: 10px;}
     .board-item__main {float: left;}
-    .board-item__link {text-decoration: none; color: #333}
+    .board-item__link {text-decoration: none; color: ${props => props.theme.color.black}}
     .board-item__footer {float: right;}
 `;
 

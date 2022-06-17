@@ -14,7 +14,7 @@ import Password from "../Routes/MyPage/Password";
 import MyArticle from "../Routes/MyPage/MyArticle";
 import MyRecommend from "../Routes/MyPage/MyRecommend";
 import WriteArticleButton from "./common/WriteArticleButton";
-import WriteArticle from "../Routes/Article/WriteArticle";
+import WriteArticle from "../Routes/WriteArticle/WriteArticle";
 import ArticleDetailContainer from "../Routes/ArticleDetail/ArticleDetailContainer";
 import ArticleSortListContainer from "../Routes/ArticleSortList/ArticleSortListContainer";
 import PrivateRoute from "../Routes/PrivateRoute";
@@ -24,7 +24,6 @@ export default (props) => (
         <Router>
             <Header />
             <Nav />
-            {/*<WriteArticleButton />*/}
             <Switch>
                 {/*<PrivateRoute exact path="/" component={Main} getRoomList={props.getRoomList}/>*/}
                 <Route component={Main} path="/" exact />
@@ -44,6 +43,5 @@ export default (props) => (
                 <Route path="/news" exact component={News}/>
                 <Redirect from="*" to="/" />
             </Switch>
-            <Footer />
         </Router>
     );

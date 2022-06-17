@@ -3,14 +3,15 @@ import styled from 'styled-components';
 const FooterWrap = styled.div`
 .footer {
     //border-top: 1px black;
-    padding: 10px;
-    background: #3a3a3a;
-    color: #ccc;
+    padding: 20px;
+    background: ${props => props.theme.color.black};
+    color: ${props => props.theme.color.white};;
     font: 7px 'arial';
     letter-spacing: 1px;
-    margin: 150px 0 0 0;
     text-align: left;
-        justify-content: center;
+    justify-content: center;
+    transform: translateY(-0%);  
+     position: relative;
 }
 `;
 
@@ -21,13 +22,11 @@ const FooterImage = styled.img`
 function Footer(){
     return (
         <FooterWrap>
-            <footer id="footer">
                 <div className="footer">
                     <FooterImage src={require('../../assets/logo/footerLogo.png')}/>
                     <h2>Copyright 2022-2022 H!CANADA © All rights reserved.</h2>
                     <h2>E-mail:H!CANADA@gmail.com 전화:0100-1010-1010</h2>
                 </div>
-            </footer>
         </FooterWrap>
     );
 }

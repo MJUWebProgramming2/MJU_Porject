@@ -2,12 +2,13 @@ import styled from 'styled-components';
 
 
 const WeatherItem = styled.div`
+cursor: pointer;
 margin:0px 20px;
 padding: 15px;
 border-radius: 10px;
 width: 280px;
-background-color: #3a3a3a;
-color: #fcfcfc;
+background-color: ${props => props.theme.color.black};
+color: ${props => props.theme.color.white};
 box-shadow:0 1px 1px rgba(0,0,0,0.25),0 2px 2px rgba(0,0,0,0.2),0 4px 4px rgba(0,0,0,0.15),0 8px 8px rgba(0,0,0,0.1),0 16px 16px rgba(0,0,0,0.05);
 `;
 
@@ -47,8 +48,8 @@ font-size: 40px;
 text-align: center;
 line-height: 180px;
 
-background-color: #fcfcfc;
-color: #606060;
+background-color: ${props => props.theme.color.white};
+color:${props => props.theme.color.gray};
 box-shadow:0 1px 1px rgba(0,0,0,0.25),0 2px 2px rgba(0,0,0,0.2),0 4px 4px rgba(0,0,0,0.15),0 8px 8px rgba(0,0,0,0.1),0 16px 16px rgba(0,0,0,0.05);
 `;
 

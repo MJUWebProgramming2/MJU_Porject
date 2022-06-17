@@ -12,6 +12,8 @@ class ArticleSortListContainer extends Component<any, any>{
             result: null,
             error: null,
             loading: true,
+            currentPage: 1,
+            postPerPage: 1,
         };
     }
 
@@ -28,6 +30,7 @@ class ArticleSortListContainer extends Component<any, any>{
         }
 
         let result = null;
+
         try{
             ({data: result} = await itemsApi.allItem());
         }catch {
@@ -36,6 +39,7 @@ class ArticleSortListContainer extends Component<any, any>{
             this.setState({loading: false, result});
         }
     }
+
     render() {
         const { result, error, loading} = this.state;
         return ( <><ArticleSortListPresenter result={result} error={error} loading={loading}/></>);

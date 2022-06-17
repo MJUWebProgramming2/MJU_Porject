@@ -15,9 +15,9 @@ const CategoryBar = (props: any) => {
 
 const SLink = styled(Link)`
   text-decoration: none;
-  color: #3a3a3a;
+  color: ${props => props.theme.color.black};
   :visited{
-      color: #3a3a3a;
+      color: ${props => props.theme.color.black};
   }
 `;
 
@@ -25,7 +25,7 @@ const CategoryBarWrap = styled.div``;
 const CategoryList = styled.li`
 list-style: none;
 font-size: 18px;
-border-bottom: 1px solid #3a3a3a;
+border-bottom: 1px solid ${props => props.theme.color.black};
 padding: 5px;
 `
 
